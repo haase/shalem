@@ -1,4 +1,4 @@
-var start_time = false, end_time = false,  elapsed_time = false;
+var start_time = false, end_time = false,  elapsed_time = false, elapsed_minutes = false;
 var interval_timer = false, interval = 20*60*1000, progress = 0, paused = false, last_check = false;
 
 function getNow(){
@@ -14,11 +14,16 @@ function interval_callback(evt){
     var now = getNow();
     if (!(last_check)) last_check = start_time;
     elapsed_time = elapsed_time + (now-last_check);
+    var new_minutes = Math.floor(elapsed_time/(60*1000));
+    if (elapsed_minutes != new_minutes) {
+	minutes_tick(new_minutes);
+	elapsed_minutes=new_minutes;}
     last_check = now;
     if (elapsed_time > interval) {
 	timer_done(evt);}
     else set_togo(interval-elapsed_time);
 }
+function minutes_tick(m){}
 function set_togo(togo){
     var minutes_togo = Math.ceil(togo/(60*1000));
     var count_elt = byID("countdown_value");
@@ -33,6 +38,8 @@ function start_timer(evt){
 	set_timer_interval(false);
     start_time = last_check = getNow();
     elapsed_time = 0;
+    elapsed_minutes = 0;
+    set_togo(interval);
     if (interval_timer) window.clearInterval(interval_timer);
     interval_timer = window.setInterval(interval_callback,100);
     app.classList.add("running");
@@ -43,6 +50,8 @@ function pause_timer(evt){
     app.classList.add("paused");
     app.classList.remove("running");}
 function resume_timer(evt){
+    var app = byID("TIMER_APP");
+    last_check = getNow();
     paused = false;
     app.classList.remove("paused");
     app.classList.add("running");}

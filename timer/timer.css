@@ -77,7 +77,9 @@ div.buttons button#START_TIMER,
 div.buttons button#SET_TIMER { 
     display: block; }
 
-#TIMER_APP.running div.buttons button#START_TIMER { display: none; }
+#TIMER_APP.running div.buttons button#START_TIMER,
+#TIMER_APP.paused div.buttons button#START_TIMER { 
+    display: none; }
 #TIMER_APP.running div.buttons button#PAUSE_TIMER { display: block; }
 #TIMER_APP.paused div.buttons button#RESUME_TIMER { display: block; }
 
