@@ -1,0 +1,88 @@
+body {
+    font-family: sans,sans-serif; font-size: 4vw; 
+    box-sizing: border-box;}
+
+div#TIMER_APP {
+    background-color: #0081c3;
+    position: relative;
+    text-align: center;
+    max-width: 400px;
+    height: 100%;}
+
+div.body {
+    width: 100%;}
+
+div.countdown input { display: none; }
+div#TIMER_APP.setting div.countdown input { display: block; }
+div#TIMER_APP.setting div.countdown div.minutes { display: none; }
+
+div.countdown {
+    text-align: center;
+    box-sizing: border-box;}
+div.countdown > *{
+    box-sizing: border-box;}
+div.countdown div.count {
+    font-size: 10vw;}
+div.countdown input[type="number"] {
+    font-size: 10vw;}
+div.countdown div.label {
+    position: relative;
+    vertical-align: top;
+    font-size: 3vw;
+    padding-bottom: 1vh;}
+div.countdown div.label .text {
+    vertical-align: middle;}
+div.countdown div.label div.bar {
+    position: absolute;
+    top: 0px; left: 0px; z-index: 50;
+    border-right: darkgreen solid 2px;
+    border-left: darkgreen solid 2px;
+    box-sizing: border-box;
+    background-color: lightgreen;
+    width: 100%;
+    height: 100%;
+    opacity: 0.0;}
+div#TIMER_APP.running div.countdown div.label div.bar {
+    opacity: 0.5;}
+
+div.countdown span.hours, div.countdown span.minutes {
+    width: 20vw;}
+div.countdown #countdown_value {}
+div.countdown input {
+    width: 100%;
+    font-size: inherit;
+    text-align: center;
+    display: none;}
+div#TIMER_APP.setting div.countdown input {
+    display: block;}
+div#TIMER_APP.setting div.countdown #countdown_value {
+    display: none;}
+
+div.buttons button { 
+    display: block;
+    text-align: center;
+    font-size: 4vw;
+    height: 1.25em;
+    width: 100%;}
+div.buttons button .text {
+    font-style: italic;
+    float: left;}
+div.buttons button img {
+    height: 90%; width: auto;
+    float: right;}
+
+div.buttons button {
+    display: none; }
+div.buttons button#START_TIMER,
+div.buttons button#SET_TIMER { 
+    display: block; }
+
+#TIMER_APP.running div.buttons button#START_TIMER { display: none; }
+#TIMER_APP.running div.buttons button#PAUSE_TIMER { display: block; }
+#TIMER_APP.paused div.buttons button#RESUME_TIMER { display: block; }
+
+div#TIMER_APP.setting div.buttons button#SET_TIMER { display: none; }
+div#TIMER_APP.setting div.buttons button#TIMER_SET { display: block; }
+
+
+div#TIMER_APP.running
